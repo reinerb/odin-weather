@@ -5,7 +5,7 @@ import pubsub from "./pubsub.js";
 
 window.addEventListener("load", () => {
   pubsub.subscribe("changeCity", render);
-  weather.getCurrentWeather("boston");
+  weather.getCurrentWeather("london");
 });
 
 DOMElement.searchBar.submit.addEventListener("click", () => {
