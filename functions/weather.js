@@ -1,3 +1,5 @@
+import pubsub from "./pubsub.js";
+
 const weather = (() => {
   const _apiKey = "bdecf9b86e53f1f1ab5da9ef4c076621";
 
@@ -6,13 +8,13 @@ const weather = (() => {
   // (clear, cloudy, rain, snow...)
   function formatCurrentWeatherData(data) {
     let formatted = {
-      cityName: data.name,
+      city: data.name,
       temperature: {
-        current: data.main.temp,
+        actual: Math.round(data.main.temp),
         humidity: data.main.humidity,
-        feelsLike: data.main.feels_like,
+        feelsLike: Math.round(data.main.feels_like),
       },
-      weather: data.weather[0].main,
+      conditions: data.weather[0].main,
       wind: {
         speed: data.wind.speed,
         direction: getWindDirection(data.wind.deg),
@@ -49,7 +51,8 @@ const weather = (() => {
       const response = await fetch(endpoint, { mode: "cors" });
       if (!response.ok) throw new Error(`City ${city} not found`);
       const formattedData = formatCurrentWeatherData(await response.json());
-      return formattedData;
+      pubsub.publish("changeCity", formattedData);
+      console.log(`Publishing data for ${formattedData.city}`);
     } catch (error) {
       alert(error);
       return null;

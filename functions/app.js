@@ -1,13 +1,14 @@
 import weather from "./weather.js";
-import iconSelector from "./iconSelector.js";
+import render from "./render.js";
+import * as DOMElement from "./DOMElements.js";
+import pubsub from "./pubsub.js";
 
-const weatherInfo = document.querySelector(".weather-icon");
-const windDirection = document.querySelector(".wind-direction");
+window.addEventListener("load", () => {
+  pubsub.subscribe("changeCity", render);
+  weather.getCurrentWeather("boston");
+});
 
-const bostonWeather = await weather.getCurrentWeather("boston");
-console.log(bostonWeather);
-
-weatherInfo.innerHTML = iconSelector.getWeatherIcon(bostonWeather.weather);
-windDirection.innerHTML = iconSelector.getWindDirectionIcon(
-  bostonWeather.wind.direction
-);
+DOMElement.searchBar.submit.addEventListener("click", () => {
+  weather.getCurrentWeather(DOMElement.searchBar.input.value);
+  DOMElement.searchBar.input.value = "";
+});

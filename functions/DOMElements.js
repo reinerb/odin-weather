@@ -10,11 +10,17 @@ export const weatherCardElements = {
     icon: document.querySelector(".conditions-icon"),
   },
   temperature: {
-    actual: document.querySelector("temperature-actual"),
-    feelsLike: document.querySelector("temperature-feels-like"),
+    actual: document.querySelector(".temperature-actual"),
+    feelsLike: document.querySelector(".temperature-feels-like"),
   },
   wind: {
     icon: document.querySelector(".wind-icon"),
     text: document.querySelector(".wind-text"),
   },
+};
+
+// Search bar
+export const searchBar = {
+  input: document.querySelector("#city-name"),
+  submit: document.querySelector("#change-city-submit"),
 };
