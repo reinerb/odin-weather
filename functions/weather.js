@@ -15,11 +15,32 @@ const weather = (() => {
       weather: data.weather[0].main,
       wind: {
         speed: data.wind.speed,
-        direction: data.wind.code,
+        direction: getWindDirection(data.wind.deg),
       },
     };
 
     return formatted;
+  }
+
+  function getWindDirection(deg) {
+    switch (true) {
+      case deg > 22.5 && deg <= 67.5:
+        return "NE";
+      case deg > 67.5 && deg <= 112.5:
+        return "E";
+      case deg > 112.5 && deg <= 157.5:
+        return "SE";
+      case deg > 157.5 && deg <= 202.5:
+        return "S";
+      case deg > 202.5 && deg <= 247.5:
+        return "SW";
+      case deg > 247.5 && deg <= 292.5:
+        return "W";
+      case deg > 292.5 && deg <= 337.5:
+        return "NW";
+      default:
+        return "N";
+    }
   }
 
   async function getCurrentWeather(city) {
@@ -34,8 +55,6 @@ const weather = (() => {
       return null;
     }
   }
-
-  // Get the 7-day forecast for the given city.
 
   return { getCurrentWeather };
 })();

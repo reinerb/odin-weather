@@ -3,7 +3,7 @@
 // https://materialdesignicons.com/
 
 const iconSelector = (() => {
-  const icons = {
+  const weatherIcons = {
     clear: `<path fill="currentColor" d="M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,2L14.39,5.42C13.65,5.15 12.84,5 12,5C11.16,5 10.35,5.15 9.61,5.42L12,2M3.34,7L7.5,6.65C6.9,7.16 6.36,7.78 5.94,8.5C5.5,9.24 5.25,10 5.11,10.79L3.34,7M3.36,17L5.12,13.23C5.26,14 5.53,14.78 5.95,15.5C6.37,16.24 6.91,16.86 7.5,17.37L3.36,17M20.65,7L18.88,10.79C18.74,10 18.47,9.23 18.05,8.5C17.63,7.78 17.1,7.15 16.5,6.64L20.65,7M20.64,17L16.5,17.36C17.09,16.85 17.62,16.22 18.04,15.5C18.46,14.77 18.73,14 18.87,13.21L20.64,17M12,22L9.59,18.56C10.33,18.83 11.14,19 12,19C12.82,19 13.63,18.83 14.37,18.56L12,22Z" />`,
     clouds: `<path fill="currentColor" d="M6,19A5,5 0 0,1 1,14A5,5 0 0,1 6,9C7,6.65 9.3,5 12,5C15.43,5 18.24,7.66 18.5,11.03L19,11A4,4 0 0,1 23,15A4,4 0 0,1 19,19H6M19,13H17V12A5,5 0 0,0 12,7C9.5,7 7.45,8.82 7.06,11.19C6.73,11.07 6.37,11 6,11A3,3 0 0,0 3,14A3,3 0 0,0 6,17H19A2,2 0 0,0 21,15A2,2 0 0,0 19,13Z" />`,
     rain: `<path fill="currentColor" d="M9,12C9.53,12.14 9.85,12.69 9.71,13.22L8.41,18.05C8.27,18.59 7.72,18.9 7.19,18.76C6.65,18.62 6.34,18.07 6.5,17.54L7.78,12.71C7.92,12.17 8.47,11.86 9,12M13,12C13.53,12.14 13.85,12.69 13.71,13.22L11.64,20.95C11.5,21.5 10.95,21.8 10.41,21.66C9.88,21.5 9.56,20.97 9.7,20.43L11.78,12.71C11.92,12.17 12.47,11.86 13,12M17,12C17.53,12.14 17.85,12.69 17.71,13.22L16.41,18.05C16.27,18.59 15.72,18.9 15.19,18.76C14.65,18.62 14.34,18.07 14.5,17.54L15.78,12.71C15.92,12.17 16.47,11.86 17,12M17,10V9A5,5 0 0,0 12,4C9.5,4 7.45,5.82 7.06,8.19C6.73,8.07 6.37,8 6,8A3,3 0 0,0 3,11C3,12.11 3.6,13.08 4.5,13.6V13.59C5,13.87 5.14,14.5 4.87,14.96C4.59,15.43 4,15.6 3.5,15.32V15.33C2,14.47 1,12.85 1,11A5,5 0 0,1 6,6C7,3.65 9.3,2 12,2C15.43,2 18.24,4.66 18.5,8.03L19,8A4,4 0 0,1 23,12C23,13.5 22.2,14.77 21,15.46V15.46C20.5,15.73 19.91,15.57 19.63,15.09C19.36,14.61 19.5,14 20,13.72V13.73C20.6,13.39 21,12.74 21,12A2,2 0 0,0 19,10H17Z" />`,
@@ -14,20 +14,22 @@ const iconSelector = (() => {
     tornado: `<path fill="currentColor" d="M21,5H3A1,1 0 0,1 2,4A1,1 0 0,1 3,3H21A1,1 0 0,1 22,4A1,1 0 0,1 21,5M20,8A1,1 0 0,0 19,7H5A1,1 0 0,0 4,8A1,1 0 0,0 5,9H19A1,1 0 0,0 20,8M21,12A1,1 0 0,0 20,11H10A1,1 0 0,0 9,12A1,1 0 0,0 10,13H20A1,1 0 0,0 21,12M16,16A1,1 0 0,0 15,15H9A1,1 0 0,0 8,16A1,1 0 0,0 9,17H15A1,1 0 0,0 16,16M13,20A1,1 0 0,0 12,19H10A1,1 0 0,0 9,20A1,1 0 0,0 10,21H12A1,1 0 0,0 13,20Z" />`,
   };
 
-  const getIcon = (conditions) => {
+  const windDirectionIcon = `<path fill="currentColor" d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z" />`;
+
+  const getWeatherIcon = (conditions) => {
     switch (conditions) {
       case "Clouds":
-        return icons.clouds;
+        return weatherIcons.clouds;
       case "Drizzle":
-        return icons.drizzle;
+        return weatherIcons.drizzle;
       case "Rain":
-        return icons.rain;
+        return weatherIcons.rain;
       case "Snow":
-        return icons.snow;
+        return weatherIcons.snow;
       case "Thunderstorm":
-        return icons.thunderstorm;
+        return weatherIcons.thunderstorm;
       case "Tornado":
-        return icons.tornado;
+        return weatherIcons.tornado;
       case "Mist":
       case "Smoke":
       case "Haze":
@@ -36,13 +38,44 @@ const iconSelector = (() => {
       case "Sand":
       case "Ash":
       case "Squall":
-        return icons.fog;
+        return weatherIcons.fog;
       default:
-        return icons.clear;
+        return weatherIcons.clear;
     }
   };
 
-  return { getIcon };
+  const getWindDirectionIcon = (direction) => {
+    let degrees;
+    switch (direction) {
+      case "NE":
+        degrees = 45;
+        break;
+      case "E":
+        degrees = 90;
+        break;
+      case "SE":
+        degrees = 135;
+        break;
+      case "S":
+        degrees = 180;
+        break;
+      case "SW":
+        degrees = 225;
+        break;
+      case "W":
+        degrees = 270;
+        break;
+      case "NW":
+        degrees = 315;
+        break;
+      default:
+        degrees = 0;
+    }
+
+    return `<svg class="wind-direction-icon" viewBox="0 0 24 24" style="transform: rotate(${degrees}deg)">${windDirectionIcon}</svg>`;
+  };
+
+  return { getWeatherIcon, getWindDirectionIcon };
 })();
 
 export default iconSelector;
