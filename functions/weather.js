@@ -12,13 +12,10 @@ const weather = (() => {
         humidity: data.main.humidity,
         feelsLike: data.main.feels_like,
       },
+      weather: data.weather[0].main,
       wind: {
         speed: data.wind.speed,
-        direction: data.wind.deg,
-      },
-      weather: {
-        id: data.weather[0].id,
-        type: data.weather[0].main,
+        direction: data.wind.code,
       },
     };
 

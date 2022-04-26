@@ -1,5 +1,23 @@
+:root {
+  --clr-primary-50: #f0f9ff;
+  --clr-primary-100: #e0f2fe;
+  --clr-primary-200: #bae6fd;
+  --clr-primary-300: #7dd3fc;
+  --clr-primary-400: #38bdf8;
+  --clr-primary-500: #0ea5e9;
+  --clr-primary-600: #0284c7;
+  --clr-primary-700: #0369a1;
+  --clr-primary-800: #075985;
+  --clr-primary-900: #0c4a6e;
+}
+
 body {
   min-height: 100vh;
   display: grid;
   place-items: center;
+}
+
+.weather-icon {
+  width: 50px;
+  aspect-ratio: 1;
 }
